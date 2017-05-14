@@ -15,17 +15,18 @@ namespace PokerNet.Migrations
 
         protected override void Seed(Repository.RepositoryContext context)
         {
-
-            context.People.AddOrUpdate(x => x.ID,
-                new Person { FirstName = "James", Order = 1 },
-                new Person { FirstName = "Jeff", Order = 2 },
-                new Person { FirstName = "Kevin", Order = 3 },
-                new Person { FirstName = "Christian", Order = 4 },
-                new Person { FirstName = "Aaron", Order = 5 },
-                new Person { FirstName = "Greg", Order = 6 },
-                new Person { FirstName = "Matt", Order = 7 }
-                );
-
+            if (!context.People.Any())
+            {
+                context.People.AddOrUpdate(x => x.ID,
+                    new Person { ID = Guid.NewGuid(), FirstName = "James", Order = 1 },
+                    new Person { ID = Guid.NewGuid(), FirstName = "Jeff", Order = 2 },
+                    new Person { ID = Guid.NewGuid(), FirstName = "Kevin", Order = 3 },
+                    new Person { ID = Guid.NewGuid(), FirstName = "Christian", Order = 4 },
+                    new Person { ID = Guid.NewGuid(), FirstName = "Aaron", Order = 5 },
+                    new Person { ID = Guid.NewGuid(), FirstName = "Greg", Order = 6 },
+                    new Person { ID = Guid.NewGuid(), FirstName = "Matt", Order = 7 }
+                    );
+            }
 
             //  This method will be called after migrating to the latest version.
 
