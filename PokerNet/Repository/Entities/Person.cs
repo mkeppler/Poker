@@ -16,5 +16,9 @@ namespace PokerNet.Repository.Entities
         public DateTime? HostingDate { get; set; }
 
         public int Order { get; set; }
+
+        [NotMapped]
+        public bool IsCurrentPerson { get; set; }
+           
     }
 }

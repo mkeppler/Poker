@@ -10,19 +10,20 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using PokerNet.Repository.Entities;
 using PokerNet.Repository;
+using PokerNet.Models;
 
 namespace PokerNet.Controllers
 {
     public class PeopleController : ApiController
     {
         private RepositoryContext db = new RepositoryContext();
-
+        
         // GET: api/People
-        public IQueryable<Person> GetPeople()
+        public IList<Person> GetPeople()
         {
-            return db.People;
+            return db.People.OrderBy(o=>o.Order).ToList();
         }
-
+        
         // GET: api/People/5
         [ResponseType(typeof(Person))]
         public IHttpActionResult GetPerson(Guid id)
